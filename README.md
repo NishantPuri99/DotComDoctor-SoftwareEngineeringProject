@@ -9,6 +9,11 @@
 #### Here is the link to VIEW our Trello Board: <a href="https://trello.com/b/UvC8aT2c/dotcomdoctor-kanban-board">DotComDoctor-Kanban Board</a>
 ___________________________________________________________________________________________________________________________________________________________________________________
 
-## Official Documentation:
+## Official Documentation: [DotComDoctor]
+(link to the synopsis doc)
 
 ___________________________________________________________________________________________________________________________________________________________________________________
+
+## Timeline :
+<ins>**1 August 2020 - 12 August 2020:**</ins> 
+**Formation of Team**
