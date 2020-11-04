@@ -1,10 +1,21 @@
 <html>
+    <head>
+        <style>
+        .checkbox-grid li {
+            display: block;
+            float: left;
+            width: 25%;
+        }
+        </style>
+    </head>
     <body> 
         <form method="post" action="/">
+            <ul class="checkbox-grid">
                 {%for i in variable%}
-                    <input type="checkbox" name="symptoms" value={{i}}> {{i}} </input><br>
+                    <li><input type="checkbox" name="symptoms" value={{i}}><label for = {{i}}> {{i}} </label></input></li>
                 {%endfor%}
                 <input type="submit" value="Diagnose" />
+            </ul>
         </form>
     </body>
 </html>

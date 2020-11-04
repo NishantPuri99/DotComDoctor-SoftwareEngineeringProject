@@ -1,7 +1,9 @@
 <html>
     <body> 
         <form method="post" action="/diagnosis.html">
-                {{variable}}
+                {%for k,v in variable['RFC-result'].items()%}
+                    {{k}} disease has {{v}}%probability<br>
+                {%endfor%}
         </form>
     </body>
 </html>

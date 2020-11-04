@@ -9,6 +9,11 @@ output_prediction = ""
 i_s = {}
 for i in df.columns:    
     i_s[i] = random.randrange(0,2,1)
+# print(list(df["prognosis"]))
+prognosisList = []
+for i in list(df["prognosis"]):
+    if i not in prognosisList:
+        prognosisList.append(i)
 app = Flask(__name__)
 app.secret_key = "abc"
 DTCModel = pickle.load(open('DTCmodel.pkl','rb'))
@@ -29,15 +34,30 @@ def symptomGiver():
         test_x.drop(columns=['prognosis','Unnamed: 133'],axis=1,inplace = True)
         DTCprediction = DTCModel.predict(test_x)
         RFCprediction = RFCModel.predict(test_x)
+        DTCprobs = DTCModel.predict_proba(test_x)
+        RFCprobs = RFCModel.predict_proba(test_x)
+        print(DTCModel.predict_proba(test_x))
+        print(RFCModel.predict_proba(test_x))
         DTCoutput = DTCprediction
         RFCoutput = RFCprediction
-        output_prediction = {'RFC-result':df.iloc[RFCoutput[0],-2],'DTC-result':df.iloc[DTCoutput[0],-2],}
+        DTCRes = {}
+        RFCRes = {}
+        for i in range(0,41):
+            if DTCprobs[0][i] != 0.0:
+                DTCRes[prognosisList[i]] = DTCprobs[0][i]*100
+        for i in range(0,41):
+            if RFCprobs[0][i] != 0.0:
+                RFCRes[prognosisList[i]] = RFCprobs[0][i]*100
+        #print(DTCRes)
+        #print(RFCRes)
+        #output_prediction = {'RFC-result':df.iloc[RFCoutput[0],-2],'DTC-result':df.iloc[DTCoutput[0],-2],}
+        output_prediction = {'RFC-result':RFCRes,}
         session["diagnosis"] = output_prediction
         return redirect(url_for('diagnosis'))
     return render_template('index.html',variable = symptomsList)
 @app.route('/diagnosis')
 def diagnosis():
-    print(session['diagnosis'])
+    #print(session['diagnosis'])
     return render_template('diagnosis.html',variable=session['diagnosis'])
 if __name__ == '__main__':
     app.run(port=5000,debug=True)

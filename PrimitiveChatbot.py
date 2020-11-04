@@ -30,5 +30,7 @@ test_predRFC = RFC.predict(test_x)
 
 DTCAccuracy = accuracy_score(test_y,test_predDTC)
 RFCAccuracy = accuracy_score(test_y,test_predRFC)
+class_probs = DTC.predict_proba(test_x)
+print(class_probs)
 print(DTCAccuracy)
 print(RFCAccuracy)
