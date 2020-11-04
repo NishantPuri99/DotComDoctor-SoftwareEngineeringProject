@@ -12,7 +12,7 @@
         <form method="post" action="/">
             <ul class="checkbox-grid">
                 {%for i in variable%}
-                    <li><input type="checkbox" name="symptoms" value={{i}}><label for = {{i}}> {{i}} </label></input></li>
+                    <li><input type="checkbox" name="symptoms" value={{i}}><label for = {{i}}> {{i.replace("_"," ").capitalize()}} </label></input></li>
                 {%endfor%}
                 <input type="submit" value="Diagnose" />
             </ul>
