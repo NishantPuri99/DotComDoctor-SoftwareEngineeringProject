@@ -12,11 +12,11 @@ symptomsList = [x for x in df if x!='prognosis']
 
 app = Flask(__name__)
 app.secret_key = "abc"
-CheckForJaundice = pickle.load(open('Jaundice_pred.pkl','rb'))
-CheckForDengue = pickle.load(open('Dengue_pred.pkl','rb'))
-CheckForCC = pickle.load(open('CC_pred.pkl','rb'))
-CheckForTB = pickle.load(open('TB_pred.pkl','rb'))
-CheckForCPox = pickle.load(open('ChickenPox_pred.pkl','rb'))
+CheckForJaundice = pickle.load(open('PKLs/Jaundice_pred.pkl','rb'))
+CheckForDengue = pickle.load(open('PKLs/Dengue_pred.pkl','rb'))
+CheckForCC = pickle.load(open('PKLs/CC_pred.pkl','rb'))
+CheckForTB = pickle.load(open('PKLs/TB_pred.pkl','rb'))
+CheckForCPox = pickle.load(open('PKLs/ChickenPox_pred.pkl','rb'))
 
 @app.route('/',methods=['GET','POST'])
 def symptomGiver():
