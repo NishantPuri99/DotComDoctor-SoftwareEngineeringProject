@@ -1,9 +1,25 @@
 <html>
     <body> 
         <form method="post" action="/diagnosis.html">
-                {%for k,v in variable['RFC-result'].items()%}
-                    {{k}} disease has {{v}}%probability<br>
-                {%endfor%}
+            {% if variable[0] == True%}
+                <div>Based on the symptoms, you may have {{variable[1]}}<br> (Accuracy of this prediction: {{variable[2]}}%)</div>
+            {% else %}
+                {% if not variable[1] %}
+                    It seems like None of the symptoms could help predict the type of disease.<br> 
+                    We'd recommend to contact the nearest Hospital.<br>
+                    If you wish to re-enter the symptoms, <a href='/'> Click Here </a>
+                {% else %}
+                    <div>
+                    We couldn't classify your symptoms into any particular disease.<br> 
+                    Here is a list of predictions based on your symptoms, along with their probabilities
+                        {%for i in variable[1]%}
+                        <ul>
+                            <li>{{i[0]}} --> Probability {{i[1]}} %
+                        </ul>
+                        {%endfor%}
+                    </div>
+                {% endif %}
+            {% endif %}
         </form>
     </body>
 </html>
