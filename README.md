@@ -83,12 +83,20 @@ ________________________________________________________________________________
  </ul>
  
 
-<ins>**16 October, 2020 - Now:**</ins><br>
+<ins>**16 October, 2020 - 6 November, 2020:**</ins><br>
 *Development Phase III*
 <ul style="list-style-type:circle">
-  <li>We are completing our NLP Learning part</li>
-  <li>We're now picking up the Map API Part and are using HereMaps for the same</li>
-  <li>We now need to focus on improving the Look and Feel of the same</li>
- </ul>
- 
+  <li>Completed Basics of Learning and Using Maps API</li>
+  <li>Solved Error of using multiple Features and Labels at once</li>
+    <li>System (without NLP Model) is Complete now for Five Diseases, namely <b>Dengue</b>, <b>Common Cold</b>, <b>Chicken Pox</b>, <b>Tuberculosis</b>, <b>Jaundice</b></li>
+</ul>
+
+
+<ins>**7 November, 2020 - Present**</ins><br>
+*Development Phase IV*
+<ul style="list-style-type:circle">
+  <li>We are completed the Maps API with routes</li>
+  <li>Using NLP to make the symptoms less scattered</li>
+  <li>Working on our final presentation (including Look and Feel of the Final Web App)</li>
+</ul>
 _______________________________________________________________________________________________________________________________________________________________________________
