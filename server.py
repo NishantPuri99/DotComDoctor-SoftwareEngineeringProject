@@ -13,11 +13,6 @@ symptomsList = [x for x in df if x!='prognosis']
 
 app = Flask(__name__)
 app.secret_key = "abc"
-CheckForJaundice = pickle.load(open('PKLs/Jaundice_pred.pkl','rb'))
-CheckForDengue = pickle.load(open('PKLs/Dengue_pred.pkl','rb'))
-# CheckForCC = pickle.load(open('PKLs/CC_pred.pkl','rb'))
-# CheckForTB = pickle.load(open('PKLs/TB_pred.pkl','rb'))
-# CheckForCPox = pickle.load(open('PKLs/ChickenPox_pred.pkl','rb'))
 Pickles = []
 for root,dirs,files in os.walk('D:\PEC\THIRD YEAR\SEMESTER 5\AI+WebTech+SE Project\DotComDoctor-Main\PKLs'):
     Pickles.append(files)
@@ -35,16 +30,7 @@ def symptomGiver():
             else:
                 input_symptoms[i] = 0
         test_x = pd.read_json(json.dumps([input_symptoms]))
-        # print(test_x.head())
-        # print(test_x.columns)
-        #test_x.drop(df[["Unnamed: 133"]],axis=1,inplace=True)
         test_x.drop(df[["prognosis"]],axis=1,inplace=True)
-        #test_x.drop(columns=['prognosis','Unnamed: 133'],axis=1,inplace = True)
-        #forTB = {'Prediction':CheckForTB.predict(test_x)[0],'Probs':{'HasDisease':CheckForTB.predict_proba(test_x)[0][1],'NotDiseased':CheckForTB.predict_proba(test_x)[0][0]}}
-        #forCC = {'Prediction':CheckForCC.predict(test_x)[0],'Probs':{'HasDisease':CheckForCC.predict_proba(test_x)[0][0],'NotDiseased':CheckForCC.predict_proba(test_x)[0][1]}}
-        forJaundice = {'Prediction':CheckForJaundice.predict(test_x)[0],'Probs':{'HasDisease':CheckForJaundice.predict_proba(test_x)[0][0],'NotDiseased':CheckForJaundice.predict_proba(test_x)[0][1]}}
-        forDengue = {'Prediction':CheckForDengue.predict(test_x)[0],'Probs':{'HasDisease':CheckForDengue.predict_proba(test_x)[0][0],'NotDiseased':CheckForDengue.predict_proba(test_x)[0][1]}}
-        #forCPox = {'Prediction':CheckForCPox.predict(test_x)[0],'Probs':{'HasDisease':CheckForCPox.predict_proba(test_x)[0][0],'NotDiseased':CheckForCPox.predict_proba(test_x)[0][1]}}
         Results = []
         for k,v in OpenedPickles.items():
             print(f"\nDisease {k} ")
@@ -58,22 +44,6 @@ def symptomGiver():
             else:
                 DiseaseDict['Probs'] = {'HasDisease':Probs[0][0],'NotDiseased':Probs[0][1]}
             Results.append(DiseaseDict)
-        # print(CheckForCC.predict(test_x))
-        # print(CheckForJaundice.predict(test_x))
-        # print(CheckForDengue.predict(test_x))
-        # print(CheckForTB.predict(test_x))
-        # print(CheckForCPox.predict(test_x))
-        # print(CheckForCC.predict_proba(test_x))
-        # print(CheckForJaundice.predict_proba(test_x))
-        # print(CheckForDengue.predict_proba(test_x))
-        # print(CheckForTB.predict_proba(test_x))
-        # print(CheckForCPox.predict_proba(test_x))
-        # print(forTB)
-        # print(forCC)
-        # print(forJaundice)
-        # print(forDengue)
-        # print(forCPox)
-        #Results = [forDengue,forJaundice]
         Predicted_Diagnosis = []
         Predicted_Probability = []
         ActualPredictionAvailable = False
