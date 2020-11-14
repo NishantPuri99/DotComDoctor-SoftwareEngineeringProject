@@ -33,10 +33,11 @@ def symptomGiver():
         test_x.drop(df[["prognosis"]],axis=1,inplace=True)
         Results = []
         for k,v in OpenedPickles.items():
-            print(f"\nDisease {k} ")
             Prediction = v.predict(test_x)[0]
             Probs = v.predict_proba(test_x)
-            print(f"\tPrediction = {Prediction}\t\tProbs = {Probs}")
+            # # Use ths 2 statements below for checking purposes (Uncomment these 3 lines)
+            # print(f"\nDisease {k} ")
+            # print(f"\tPrediction = {Prediction}\t\tProbs = {Probs}")
             DiseaseDict = {'Prediction':Prediction}
             ReversedProbsList = ['hepatitis A','Osteoarthristis','Paralysis (brain hemorrhage)','Peptic ulcer diseae','Pneumonia','Psoriasis','Tuberculosis','Typhoid','Urinary tract infection','Varicose veins']
             if k in ReversedProbsList:
