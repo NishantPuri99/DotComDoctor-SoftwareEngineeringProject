@@ -3,6 +3,7 @@ import pickle
 import pandas as pd
 import random
 import json
+import os
 df = pd.read_csv('training_data.csv')
 input_symptoms = {}
 output_prediction = ""
@@ -14,10 +15,16 @@ app = Flask(__name__)
 app.secret_key = "abc"
 CheckForJaundice = pickle.load(open('PKLs/Jaundice_pred.pkl','rb'))
 CheckForDengue = pickle.load(open('PKLs/Dengue_pred.pkl','rb'))
-CheckForCC = pickle.load(open('PKLs/CC_pred.pkl','rb'))
-CheckForTB = pickle.load(open('PKLs/TB_pred.pkl','rb'))
-CheckForCPox = pickle.load(open('PKLs/ChickenPox_pred.pkl','rb'))
-
+# CheckForCC = pickle.load(open('PKLs/CC_pred.pkl','rb'))
+# CheckForTB = pickle.load(open('PKLs/TB_pred.pkl','rb'))
+# CheckForCPox = pickle.load(open('PKLs/ChickenPox_pred.pkl','rb'))
+Pickles = []
+for root,dirs,files in os.walk('D:\PEC\THIRD YEAR\SEMESTER 5\AI+WebTech+SE Project\DotComDoctor-Main\PKLs'):
+    Pickles.append(files)
+OpenedPickles = {}
+for pickleFile in files:
+        name = pickleFile[:-9]
+        OpenedPickles[name] = pickle.load(open(f"D:\PEC\THIRD YEAR\SEMESTER 5\AI+WebTech+SE Project\DotComDoctor-Main\PKLs\{pickleFile}","rb"))
 @app.route('/',methods=['GET','POST'])
 def symptomGiver():
     if(request.method == 'POST'):
@@ -33,11 +40,24 @@ def symptomGiver():
         #test_x.drop(df[["Unnamed: 133"]],axis=1,inplace=True)
         test_x.drop(df[["prognosis"]],axis=1,inplace=True)
         #test_x.drop(columns=['prognosis','Unnamed: 133'],axis=1,inplace = True)
-        forTB = {'Prediction':CheckForTB.predict(test_x)[0],'Probs':{'HasDisease':CheckForTB.predict_proba(test_x)[0][1],'NotDiseased':CheckForTB.predict_proba(test_x)[0][0]}}
-        forCC = {'Prediction':CheckForCC.predict(test_x)[0],'Probs':{'HasDisease':CheckForCC.predict_proba(test_x)[0][0],'NotDiseased':CheckForCC.predict_proba(test_x)[0][1]}}
+        #forTB = {'Prediction':CheckForTB.predict(test_x)[0],'Probs':{'HasDisease':CheckForTB.predict_proba(test_x)[0][1],'NotDiseased':CheckForTB.predict_proba(test_x)[0][0]}}
+        #forCC = {'Prediction':CheckForCC.predict(test_x)[0],'Probs':{'HasDisease':CheckForCC.predict_proba(test_x)[0][0],'NotDiseased':CheckForCC.predict_proba(test_x)[0][1]}}
         forJaundice = {'Prediction':CheckForJaundice.predict(test_x)[0],'Probs':{'HasDisease':CheckForJaundice.predict_proba(test_x)[0][0],'NotDiseased':CheckForJaundice.predict_proba(test_x)[0][1]}}
         forDengue = {'Prediction':CheckForDengue.predict(test_x)[0],'Probs':{'HasDisease':CheckForDengue.predict_proba(test_x)[0][0],'NotDiseased':CheckForDengue.predict_proba(test_x)[0][1]}}
-        forCPox = {'Prediction':CheckForCPox.predict(test_x)[0],'Probs':{'HasDisease':CheckForCPox.predict_proba(test_x)[0][0],'NotDiseased':CheckForCPox.predict_proba(test_x)[0][1]}}
+        #forCPox = {'Prediction':CheckForCPox.predict(test_x)[0],'Probs':{'HasDisease':CheckForCPox.predict_proba(test_x)[0][0],'NotDiseased':CheckForCPox.predict_proba(test_x)[0][1]}}
+        Results = []
+        for k,v in OpenedPickles.items():
+            print(f"\nDisease {k} ")
+            Prediction = v.predict(test_x)[0]
+            Probs = v.predict_proba(test_x)
+            print(f"\tPrediction = {Prediction}\t\tProbs = {Probs}")
+            DiseaseDict = {'Prediction':Prediction}
+            ReversedProbsList = ['hepatitis A','Osteoarthristis','Paralysis (brain hemorrhage)','Peptic ulcer diseae','Pneumonia','Psoriasis','Tuberculosis','Typhoid','Urinary tract infection','Varicose veins']
+            if k in ReversedProbsList:
+                DiseaseDict['Probs'] = {'HasDisease':Probs[0][1],'NotDiseased':Probs[0][0]}
+            else:
+                DiseaseDict['Probs'] = {'HasDisease':Probs[0][0],'NotDiseased':Probs[0][1]}
+            Results.append(DiseaseDict)
         # print(CheckForCC.predict(test_x))
         # print(CheckForJaundice.predict(test_x))
         # print(CheckForDengue.predict(test_x))
@@ -53,7 +73,7 @@ def symptomGiver():
         # print(forJaundice)
         # print(forDengue)
         # print(forCPox)
-        Results = [forTB,forCC,forDengue,forJaundice,forCPox]
+        #Results = [forDengue,forJaundice]
         Predicted_Diagnosis = []
         Predicted_Probability = []
         ActualPredictionAvailable = False
