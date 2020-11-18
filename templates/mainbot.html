@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css?version=51">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>DotComDoctor</h1>
+    <h2>An AI Based Disease Prediction ChatBot</h2>
+    <h3><a href="/examples" target="__blank">Examples</a></h3>
+    <div>
+      <div id="chatbox">
+        <p class="botText"><span>Please try typing full sentences as I am still learning!</span></p>
+        <p class="botText"><span>I am a chatbot. You can begin conversation by typing in a message and pressing enter.</span></p>
+        <p class="botText"><span>Hi There!</span></p>
+      </div>
+      <div id="userInput">
+        <input id="textInput" type="text" name="msg" placeholder="Message">
+        <input id="buttonInput" type="submit" value="Send">
+      </div>
+      <script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          if(rawText=="No"||rawText=="no"||rawText=="Nope"||rawText=="No Thanks."){
+            $("#chatbox").append('<p class="botText"><span>Please <a href="/diagnosis">Click Here to get a diagnosis?</a></span></p>');
+            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          }else if(rawText=="Yes"||rawText=="yes"||rawText=="Yep"){
+            $("#chatbox").append('<p class="botText"><span>What else are you feeling? (If you feel your specific symptoms were not available in the previous diagnosis, then please try again)</a></span></p>');
+            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          }else{
+          $.get("/get", { msg: rawText }).done(function(data) {
+            console.log(data);
+            var botHtml = '<p class="botText"><span>';
+            if(data == "Hi. How may I help you today?"){
+              botHtml +='Hi again! To figure out what to ask, <a href="/examples" target="__blank">Click here for examples</a> </span></p>';
+              $("#chatbox").append(botHtml);
+              setTimeout(function() {$("#chatbox").append('<p class="botText"><span>If you have some symptoms, then please ask me, I will try my best to diagnose. </span></p>');}, 750);
+            }else{
+              if(data.length>15){
+                botHtml +='To select specialised symptoms navigate <a href="/symptom-selector" target="__blank">here</a>'+ '</span></p>';
+                $("#chatbox").append(botHtml);
+                var res = data.split('|');
+                console.log(res);
+                setTimeout(function() {$("#chatbox").append('<p class="botText"><span>Do you wish to add more symptoms ?</span></p>');}, 7000);
+              }else{
+                $("#chatbox").append('<p class="botText"><span>Could not get specific symptoms, please try entering something else ?</span></p>');
+              }
+            }
+            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          });  
+        };
+        }
+        $("#textInput").keypress(function(e) {
+          console.log(e)
+            if(e.which == 13) {
+                getBotResponse();
+            }
+        });
+        $("#buttonInput").click(function() {
+          getBotResponse();
+        })
+      </script>
+    </div>
+  </body>
+</html>

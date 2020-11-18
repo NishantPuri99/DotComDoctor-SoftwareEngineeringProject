@@ -1,0 +1,11 @@
+bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
+user : Hi
+bot : Hi. How may I help you today?
+user : Ouch
+bot : joint_pain|stomach_pain|muscle_wasting|fatigue|painful_walking|belly_pain|muscle_pain|weakness_of_one_body_side|unsteadiness|loss_of_balance|spinning_movements|muscle_weakness|stiff_neck|swelling_joints|movement_stiffness|hip_joint_pain|knee_pain|dizziness|cramps|obesity|neck_pain|pain_in_anal_region|chest_pain|weakness_in_limbs|malaise|abdominal_pain|back_pain|headache|lethargy
+user : hi
+bot : Hi. How may I help you today?
+user : Yellow skin
+bot : Hi. How may I help you today?
+user : Skin is 
+bot : sunken_eyes|yellowing_of_eyes|pain_behind_the_eyes|blurred_and_distorted_vision|malaise|redness_of_eyes|puffy_face_and_eyes|watering_from_eyes|visual_disturbances|lack_of_concentration

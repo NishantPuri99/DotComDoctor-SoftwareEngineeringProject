@@ -1,0 +1,7 @@
+bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
+user : hi
+bot : Hi. How may I help you today?
+user : i have continuous sneezing
+bot : continuous_sneezing|shivering|chills|joint_pain|fatigue|lethargy|cough|high_fever|breathlessness|headache|sweating|mild_fever|sinus_pressure|runny_nose|congestion|irritability|muscle_pain|muscle_weakness|phlegm|throat_irritation,
+user : i can't concentrate
+bot : anxiety|restlessness|lethargy|fatigue|mood_swings|irritability|lack_of_concentration|visual_disturbances|family_history|history_of_alcohol_consumption|depression|slurred_speech|coma
