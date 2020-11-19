@@ -120,5 +120,5 @@ def diagnosis():
         output_prediction = (ActualPredictionAvailable,list(zip(Predicted_Diagnosis,Predicted_Probability)))
     session["diagnosis"] = output_prediction
     return render_template('diagnosis.html',variable=session['diagnosis'])
-# if __name__ == '__main__':
-#     app.run(port=5000)
+if __name__ == '__main__':
+    app.run(port=5000)
