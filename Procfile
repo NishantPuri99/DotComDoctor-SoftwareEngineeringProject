@@ -1,1 +1,2 @@
-web: gunicorn wsgi:appheroku ps:scale web=1
+worker: DotComDoctor.py
+heroku ps:scale web=1
