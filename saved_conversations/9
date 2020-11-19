@@ -1,11 +1,1 @@
 bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
-user : Hi
-bot : Hi. How may I help you today?
-user : red nose
-bot : anxiety|restlessness|lethargy|fatigue|mood_swings|irritability|lack_of_concentration|visual_disturbances|family_history|history_of_alcohol_consumption|depression|slurred_speech|coma
-user : ywllow nose
-bot : itching|skin_rash|nodal_skin_erruptions|yellowish_skin|bruising|brittle_nails|drying_and_tingling_lips|irritability|red_spots_over_body|pus_filled_pimples|yellow_crust_ooze|red_sore_around_nose|blister|inflammatory_nails|small_dents_in_nails|silver_like_dusting|skin_peeling|scurring|blackheads
-user : cough
-bot : Skin is
-user : i can't breathe
-bot : continuous_sneezing|shivering|chills|joint_pain|fatigue|lethargy|cough|high_fever|breathlessness|headache|sweating|mild_fever|sinus_pressure|runny_nose|congestion|irritability|muscle_pain|muscle_weakness|phlegm|throat_irritation,

@@ -1,1 +1,5 @@
 bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
+user : Hi
+bot : Hi. How may I help you today?
+user : Red eyes
+bot : sunken_eyes|yellowing_of_eyes|pain_behind_the_eyes|blurred_and_distorted_vision|malaise|redness_of_eyes|puffy_face_and_eyes|watering_from_eyes|visual_disturbances|lack_of_concentration

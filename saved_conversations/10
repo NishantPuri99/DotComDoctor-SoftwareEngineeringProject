@@ -1,7 +1,7 @@
 bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
 user : Hi
 bot : Hi. How may I help you today?
-user : I have a headache
-bot : acidity|ulcers_on_tongue|vomiting|weight_gain|weight_loss|loss_of_apetite|nausea|indigestion|diarrhoea|constipation|swelling_of_stomach|malaise|pain_during_bowel_movements|obesity|excessive_hunger|passage_of_gases|internal_itching|increased_appetite|stomach_bleeding|distention_of_abdomen|family_history|history_of_alcohol_consumption
-user : My head is throbbing
-bot : joint_pain|stomach_pain|muscle_wasting|fatigue|painful_walking|belly_pain|muscle_pain|weakness_of_one_body_side|unsteadiness|loss_of_balance|spinning_movements|muscle_weakness|stiff_neck|swelling_joints|movement_stiffness|hip_joint_pain|knee_pain|dizziness|cramps|obesity|neck_pain|pain_in_anal_region|chest_pain|weakness_in_limbs|malaise|abdominal_pain|back_pain|headache|lethargy
+user : I have headache
+bot : I feel itchy
+user : My head hurts
+bot : continuous_sneezing|shivering|chills|joint_pain|fatigue|lethargy|cough|high_fever|breathlessness|headache|sweating|mild_fever|sinus_pressure|runny_nose|congestion|irritability|muscle_pain|muscle_weakness|phlegm|throat_irritation,

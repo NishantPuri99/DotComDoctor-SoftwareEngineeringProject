@@ -1,5 +1,9 @@
 bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
 user : hi
 bot : Hi. How may I help you today?
-user : I am sneezing
+user : I have headache
 bot : continuous_sneezing|shivering|chills|joint_pain|fatigue|lethargy|cough|high_fever|breathlessness|headache|sweating|mild_fever|sinus_pressure|runny_nose|congestion|irritability|muscle_pain|muscle_weakness|phlegm|throat_irritation,
+user : My head hurts
+bot : continuous_sneezing|shivering|chills|joint_pain|fatigue|lethargy|cough|high_fever|breathlessness|headache|sweating|mild_fever|sinus_pressure|runny_nose|congestion|irritability|muscle_pain|muscle_weakness|phlegm|throat_irritation,
+user : Itchy
+bot : itching|skin_rash|nodal_skin_erruptions|yellowish_skin|bruising|brittle_nails|drying_and_tingling_lips|irritability|red_spots_over_body|pus_filled_pimples|yellow_crust_ooze|red_sore_around_nose|blister|inflammatory_nails|small_dents_in_nails|silver_like_dusting|skin_peeling|scurring|blackheads

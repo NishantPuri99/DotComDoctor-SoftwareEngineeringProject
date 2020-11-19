@@ -1,12 +1,14 @@
-<html>
-    <body> 
+<!--<html>
+    <body> -->
+{% extends "layout.html" %}
+{% block content %}    
         <form method="post" action="/diagnosis.html">
             {% if variable[0] == True%}
                 <div>Based on the symptoms, you may have {{variable[1]}}<br> (Accuracy of this prediction: {{variable[2]}}%)</div>
             {% else %}
                 {% if not variable[1]%}
                     It seems like None of the symptoms could help predict the type of disease.<br> 
-                    We'd recommend to contact the nearest Hospital.<br>
+                    We'd recommend to contact the <a href="/map">Nearest Hospital.</a><br>
                     If you wish to re-enter the symptoms, <a href='/'> Click Here </a>
                 {% else %}
                     <div>
@@ -21,5 +23,7 @@
                 {% endif %}
             {% endif %}
         </form>
-    </body>
-</html>
+{% endblock content %}
+
+    <!--</body>
+</html>-->

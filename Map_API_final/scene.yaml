@@ -15,13 +15,13 @@ sources:
         url: https://xyz.api.here.com/tiles/osmbase/256/all/{z}/{x}/{y}.mvt
         max_zoom: 16
         url_params:
-            access_token:  ADe141M8RAGwFuh5xOMfgQA 
+            access_token:  AIgVAdmaScmN8DijHgoToAA 
 
     fountains:
-     url: https://xyz.api.here.com/hub/spaces/D4YX5RGg/tile/web/{z}_{x}_{y}
+     url: https://xyz.api.here.com/hub/spaces/SKYa9ccI/tile/web/{z}_{x}_{y}
      type: GeoJSON
      url_params:
-         access_token:  ADe141M8RAGwFuh5xOMfgQA
+         access_token:  AIgVAdmaScmN8DijHgoToAA
 
 layers:
 

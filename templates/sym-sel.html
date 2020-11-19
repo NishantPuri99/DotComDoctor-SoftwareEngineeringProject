@@ -1,6 +1,7 @@
+ <!--
 <html>
     <head>
-        <style>
+       <style>
         .checkbox-grid li {
             display: block;
             float: left;
@@ -8,14 +9,17 @@
         }
         </style>
     </head>
-    <body> 
-        <form method="post" action="#">
+    <body> -->
+{% extends "layout.html" %}
+{% block content %}    
+        <form method="post" action="/symptom-selector">
             <ul class="checkbox-grid">
                 {%for i in variable%}
-                    <li><input type="checkbox" name="symptoms" value={{i}}><label for = {{i}}>{{i.replace("_"," ").capitalize()}}</label></input></li>
+                    <li style="display: block;float: left;width: 25%;"><input type="checkbox" name="symptoms" value={{i}}><label for = {{i}}>{{i.replace("_"," ").capitalize()}}</label></input></li>
                 {%endfor%}
                 <input type="submit" value="Add Symptoms" style="align: centerbackground-color: green;" />
             </ul>
         </form>
-    </body>
-</html>
+{% endblock content %}
+    <!--</body>
+</html>-->

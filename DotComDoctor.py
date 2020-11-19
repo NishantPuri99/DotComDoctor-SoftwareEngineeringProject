@@ -34,10 +34,20 @@ OpenedPickles = {}
 for pickleFile in files:
         name = pickleFile[:-9]
         OpenedPickles[name] = pickle.load(open(f"D:\PEC\THIRD YEAR\SEMESTER 5\AI+WebTech+SE Project\DotComDoctor-Main\PKLs\{pickleFile}","rb"))
-
 @app.route("/")
-def home():
+@app.route("/about")
+def about():
+    return render_template('about.html', title='About')
+
+@app.route("/chatbot")
+def chatbot_main():
     return render_template("mainbot.html")
+
+
+
+@app.route("/map")
+def map_function():
+    return render_template('map2.html', title='Map')
 
 @app.route("/examples")
 def examples():
@@ -96,14 +106,13 @@ def diagnosis():
     for i in Results:
         if i['Prediction'][:3] != 'Not':
             Predicted_Diagnosis.append(i['Prediction'])
-            Predicted_Probability.append(i['Probs']['HasDisease']*100)
+            Predicted_Probability.append(round(i['Probs']['HasDisease']*100))
             ActualPredictionAvailable = True
     if not Predicted_Diagnosis:
         for i in Results:
-            if(i['Probs']['HasDisease'] >= 10.0):
+            if(i['Probs']['HasDisease'] > 0.0):
                 Predicted_Diagnosis.append(i['Prediction'][4:])
-                Predicted_Probability.append(i['Probs']['HasDisease']*100)
-                print(i['Prediction'][4:],i['Probs']['HasDisease']*100)
+                Predicted_Probability.append(round(i['Probs']['HasDisease']*100))
     output_prediction = ""
     if ActualPredictionAvailable:
         output_prediction = (ActualPredictionAvailable,Predicted_Diagnosis[0],Predicted_Probability[0])

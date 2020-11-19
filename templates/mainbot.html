@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/static/style.css?version=51">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
   </head>
-  <body>
+  <body>-->
+{% extends "layout.html" %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="/static/style.css?version=51">-->
     <h1>DotComDoctor</h1>
     <h2>An AI Based Disease Prediction ChatBot</h2>
     <h3><a href="/examples" target="__blank">Examples</a></h3>
@@ -26,7 +29,7 @@
           $("#chatbox").append(userHtml);
           document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           if(rawText=="No"||rawText=="no"||rawText=="Nope"||rawText=="No Thanks."){
-            $("#chatbox").append('<p class="botText"><span>Please <a href="/diagnosis">Click Here to get a diagnosis?</a></span></p>');
+            $("#chatbox").append('<p class="botText"><span>Please <a href="/diagnosis" target="__blank">Click Here </a>to get a diagnosis</span></p>');
             document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           }else if(rawText=="Yes"||rawText=="yes"||rawText=="Yep"){
             $("#chatbox").append('<p class="botText"><span>What else are you feeling? (If you feel your specific symptoms were not available in the previous diagnosis, then please try again)</a></span></p>');
@@ -65,5 +68,6 @@
         })
       </script>
     </div>
-  </body>
-</html>
+{% endblock content %}
+  <!--</body>
+</html>-->
