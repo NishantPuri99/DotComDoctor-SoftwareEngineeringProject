@@ -92,7 +92,7 @@ ________________________________________________________________________________
 </ul>
 
 
-<ins>**7 November, 2020 - Present**</ins><br>
+<ins>**7 November, 2020 - 19 November, 2020**</ins><br>
 *Development Phase IV*
 <ul style="list-style-type:circle">
   <li>We are completed the Maps API with routes</li>
@@ -100,4 +100,5 @@ ________________________________________________________________________________
   <li>Working on our final presentation (including Look and Feel of the Final Web App)</li>
 </ul>
 
+*The Project is now complete*
 ____________________________________________________________________________________________________________________________________________________________
