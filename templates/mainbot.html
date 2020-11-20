@@ -13,9 +13,9 @@
     <h3><a href="/examples" target="__blank">Examples</a></h3>
     <div>
       <div id="chatbox">
-        <p class="botText"><span>Please try typing full sentences as I am still learning!</span></p>
-        <p class="botText"><span>I am a chatbot. You can begin conversation by typing in a message and pressing enter.</span></p>
         <p class="botText"><span>Hi There!</span></p>
+        <p class="botText"><span>I am a chatbot. You can begin conversation by typing in a message and pressing enter.</span></p>
+        <p class="botText"><span>Please try typing full sentences as I am still learning!</span></p>
       </div>
       <div id="userInput">
         <input id="textInput" type="text" name="msg" placeholder="Message">
@@ -43,14 +43,14 @@
               $("#chatbox").append(botHtml);
               setTimeout(function() {$("#chatbox").append('<p class="botText"><span>If you have some symptoms, then please ask me, I will try my best to diagnose. </span></p>');}, 750);
             }else{
-              if(data.length>15){
+              if(data.length>30){
                 botHtml +='To select specialised symptoms navigate <a href="/symptom-selector" target="__blank">here</a>'+ '</span></p>';
                 $("#chatbox").append(botHtml);
                 var res = data.split('|');
                 console.log(res);
                 setTimeout(function() {$("#chatbox").append('<p class="botText"><span>Do you wish to add more symptoms ?</span></p>');}, 7000);
               }else{
-                $("#chatbox").append('<p class="botText"><span>Could not get specific symptoms, please try entering something else ?</span></p>');
+                $("#chatbox").append('<p class="botText"><span>Invalid/Unrecognised Input, please try entering something else</span></p>');
               }
             }
             document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});

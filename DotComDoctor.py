@@ -110,7 +110,7 @@ def diagnosis():
             ActualPredictionAvailable = True
     if not Predicted_Diagnosis:
         for i in Results:
-            if(i['Probs']['HasDisease'] > 0.0):
+            if(i['Probs']['HasDisease']*100 > 15.0):
                 Predicted_Diagnosis.append(i['Prediction'][4:])
                 Predicted_Probability.append(round(i['Probs']['HasDisease']*100))
     output_prediction = ""
